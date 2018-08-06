@@ -9,3 +9,14 @@ c:\users\borja\source\repos\ProyectoASP_Noe_Bor\ProyectoASP_Noe_Bor\obj\Debug\ne
 c:\users\borja\source\repos\ProyectoASP_Noe_Bor\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.AssemblyInfo.cs
 c:\users\borja\source\repos\ProyectoASP_Noe_Bor\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.dll
 c:\users\borja\source\repos\ProyectoASP_Noe_Bor\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.pdb
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.dll
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.pdb
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\bin\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.deps.json
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\bin\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.runtimeconfig.json
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\bin\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.runtimeconfig.dev.json
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\bin\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.dll
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\bin\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.pdb
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.csprojAssemblyReference.cache
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.AssemblyInfoInputs.cache
+C:\Users\usuario\Source\Repos\BorjaEtNoemi\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.AssemblyInfo.cs

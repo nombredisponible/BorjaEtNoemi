@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+//cosas comentadas por noemi
 namespace ProyectoASP_Noe_Bor
 {
     public class Startup
