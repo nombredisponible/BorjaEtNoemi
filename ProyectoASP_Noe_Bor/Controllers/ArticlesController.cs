@@ -4,12 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoASP_Noe_Bor.Models;
 
 namespace ProyectoASP_Noe_Bor.Controllers
 {
     [Route("articles")]
     public class ArticlesController : Controller
     {
+
+        private DataContextViewModel db = new DataContextViewModel("server=localhost;port=3306;database=proyectoasp_noe_bor;user=admin;password=1111");
         // GET: Articles
         [Route("")]
         [Route("index")]
@@ -22,7 +25,7 @@ namespace ProyectoASP_Noe_Bor.Controllers
         [Route("details")]
         public ActionResult Details(int id)
         {
-            return View();
+            return View(db.GetProduct(id));
         }
 
         // GET: Articles/Create
@@ -36,13 +39,13 @@ namespace ProyectoASP_Noe_Bor.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("create")]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(ArticleViewModel art)
         {
             try
             {
-                // TODO: Add insert logic here
+                db.Insert(art);
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Articles","Home");
             }
             catch
             {

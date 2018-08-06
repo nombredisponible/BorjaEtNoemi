@@ -7,13 +7,17 @@ namespace ProyectoASP_Noe_Bor.Models
 {
     public class ArticleViewModel
     {
+        public ArticleViewModel()
+        {
+        }
+
         public ArticleViewModel(int id, string nombre, int cantidad, double precio, string imagen)
         {
             Id = id;
             Nombre = nombre;
             Cantidad = cantidad;
             Precio = precio;
-            Imagen = imagen;
+            Imagen = String.IsNullOrWhiteSpace(imagen) ? "":imagen;
         }
 
         public int Id { get; set; }
