@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace ProyectoASP_Noe_Bor.Models
@@ -104,10 +106,32 @@ namespace ProyectoASP_Noe_Bor.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO usuario (`Nickname`, `Apellidos`, `NIF`, `Mail`, `Nombre`, `Admin`, `Contrasena`) VALUES('{0}','{1}','{2}','{3}', '{4}', '{5}', '{6}');", user.Nickname, user.Apellidos, user.NIF, user.Mail, user.Nombre, 1, user.Contrasena), conn);
+                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO usuario (`Nickname`, `Apellidos`, `NIF`, `Mail`, `Nombre`, `Admin`, `Contrasena`) VALUES('{0}','{1}','{2}','{3}', '{4}', '{5}', '{6}');", user.Nickname, user.Apellidos, user.NIF, user.Mail, user.Nombre, 1, user.Contrasena, 0), conn);
                 int filas = cmd.ExecuteNonQuery();
                 Console.WriteLine(filas.ToString());
             }
+                //Validar a traves de email
+                // servidor SMTP
+
+                SmtpClient client = new SmtpClient("smtp.gmail.com");
+                client.UseDefaultCredentials = false;
+                client.Credentials = new NetworkCredential("hiberusclaseaspcoremvc@gmail.com", "111??aaa");
+                client.EnableSsl = true;
+
+                // 
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("hiberusclaseaspcoremvc@gmail.com");
+                mailMessage.To.Add(user.Mail);
+                mailMessage.Body = "Introduzca el código 12345 para terminar su proceso de inscripción";
+                mailMessage.Subject = "Borja & Noemi eShop: verifique su cuenta";
+
+                string output = "enviado";
+                try
+                {
+                    client.Send(mailMessage);
+                }
+                catch (Exception e) { output = e.ToString() + "no enviado"; }                
+            
         }
 
         public int Login(string nickname, string contrasena)
@@ -130,8 +154,10 @@ namespace ProyectoASP_Noe_Bor.Models
                         string nombre = reader.GetString("nombre");
                         bool admin = reader.GetBoolean("admin");
                         string Ucontrasena = reader.GetString("contrasena");
+                        int codVal = reader.GetInt32("codValidacion");
+                        int isVal = reader.GetInt32("validado");
 
-                        user = new UserViewModel(id, Unickname, nombre, apellidos, nif, mail, Ucontrasena, admin);
+                        user = new UserViewModel(id, Unickname, nombre, apellidos, nif, mail, Ucontrasena, admin, isVal);
                         
                     }
                     if(contrasena == user.Contrasena)

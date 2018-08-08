@@ -49,13 +49,25 @@ namespace ProyectoASP_Noe_Bor.Controllers
             try
             {
                 db.AddUser(user);
-                return View("Welcome");
+                return View("../Users/Verify");
                 //return RedirectToAction("Home", "Index");
             }
             catch
             {
                 ViewBag.error = "Invalid";
                 return View("../Shared/Error");
+            }
+        }
+
+        [Route("verify")]
+        public IActionResult Verify(int cod)
+        {
+            if (cod == 12345)
+            {
+                return View("Welcome");
+            } else
+            {
+                return View("Bad code");
             }
         }
 
