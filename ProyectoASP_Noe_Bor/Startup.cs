@@ -23,6 +23,7 @@ namespace ProyectoASP_Noe_Bor
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSession();
             var builder = new ConfigurationBuilder()
                                     .SetBasePath(System.IO.Directory.GetCurrentDirectory())
                                     .AddJsonFile("appsettings.json");
@@ -43,6 +44,7 @@ namespace ProyectoASP_Noe_Bor
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseSession();
 
             app.UseStaticFiles();
 

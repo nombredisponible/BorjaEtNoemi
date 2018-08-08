@@ -7,6 +7,13 @@ namespace ProyectoASP_Noe_Bor.Models
 {
     public class BillViewModel
     {
+        public BillViewModel()
+        {
+            this.Cliente = new UserViewModel();
+            this.LineasFactura = new List<BillDetailViewModel>();
+            this.Fecha = DateTime.Now;
+        }
+
         public BillViewModel(DateTime fecha, UserViewModel cliente, List<BillDetailViewModel> lineasFactura)
         {
             Fecha = fecha;

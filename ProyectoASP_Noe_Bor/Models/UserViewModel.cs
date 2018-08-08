@@ -7,6 +7,10 @@ namespace ProyectoASP_Noe_Bor.Models
 {
     public class UserViewModel
     {
+        public UserViewModel()
+        {
+        }
+
         public UserViewModel(string nickname, string nombre, string apellidos, string nIF, string mail, string contrasena)
         {
             Nickname = nickname;
