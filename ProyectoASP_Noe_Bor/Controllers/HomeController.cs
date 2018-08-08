@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoASP_Noe_Bor.Helpers;
 using ProyectoASP_Noe_Bor.Models;
 
 namespace ProyectoASP_Noe_Bor.Controllers
@@ -12,7 +12,7 @@ namespace ProyectoASP_Noe_Bor.Controllers
     [Route("Home")]
     public class HomeController : Controller
     {
-
+        
         private DataContextViewModel db = new DataContextViewModel("server=localhost;port=3306;database=proyectoasp_noe_bor;user=admin;password=1111");
 
         [Route("")]
@@ -58,6 +58,42 @@ namespace ProyectoASP_Noe_Bor.Controllers
             //};
 
             return View(db.GetAllProducts());
+        }
+
+
+
+        [Route("products")]
+        public IActionResult Products()
+        {
+            ViewData["Message"] = "Your products page.";
+
+            return View(db.GetAllProducts());
+        }
+
+        [Route("shoppingcart")]
+        public IActionResult ShoppingCart()
+        {
+            ViewData["Message"] = "Your cart page.";
+
+            //BillViewModel cart = new BillViewModel(DateTime.Now,new UserViewModel("aitor.menta89","Aitor", "Menta Fuerte","98765432x","aitormenta@mail.es","contraseña"),new List<BillDetailViewModel>()
+            //{
+            //    new BillDetailViewModel(3,db.GetProduct(1)),
+            //    new BillDetailViewModel(2,db.GetProduct(2)),
+            //    new BillDetailViewModel(5,db.GetProduct(3))
+            //});
+
+                BillViewModel cart = new BillViewModel();
+
+            if (SessionHelper.GetObjectFromJson<BillViewModel>(HttpContext.Session, "cart") == null)
+            {
+                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            }
+            else
+            {
+               cart = SessionHelper.GetObjectFromJson<BillViewModel>(HttpContext.Session, "cart");
+            }
+
+                return View(cart);
         }
 
         [Route("error")]
