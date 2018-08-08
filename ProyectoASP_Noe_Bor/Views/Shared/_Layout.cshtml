@@ -1,4 +1,6 @@
 ﻿<!DOCTYPE html>
+@using ProyectoASP_Noe_Bor.Helpers;
+@using Microsoft.AspNetCore.Mvc;
 <html>
 <head>
     <meta charset="utf-8" />
@@ -34,11 +36,24 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Articles">Articulos</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Products">Productos</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">3@*Pasarle el numero de items*@</span></a></li>
+                    <li>
+                        <a data-toggle="popover" data-trigger="hover" asp-controller="Home" asp-action="ShoppingCart">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            @{
+                                int items = ViewBag.cartItems == null ? 0 : ViewBag.cartItems;
+
+                                if (items > 0)
+                                {
+                                    Html.Raw("<span class='badge'>" + ViewBag.cartItems + "</span>");
+                                }
+                            }
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,6 +86,12 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="popover"]').popover({ title: "<h4>Shopping cart</h4>", content: "item01 x3 <br> item02 x2 <br> item03 x1", html: true, placement: "bottom" });
+        });
+    </script>
 
     @RenderSection("Scripts", required: false)
 </body>
