@@ -101,5 +101,19 @@ namespace ProyectoASP_Noe_Bor.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Route("login")]
+        public IActionResult Login()
+        {
+            return View("../Users/Login");
+        }
+
+        [Route("new")]
+        public IActionResult NewUser()
+        {
+            return View("../Users/NewUser");
+        }
+
     }
+
 }

@@ -82,7 +82,7 @@ namespace ProyectoASP_Noe_Bor.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO producto (`Nombre`, `Precio`, `Imagen`, `Cantidad`) VALUES('{0}','{1}','{2}','{3}');", article.Nombre,article.Precio,article.Imagen,article.Cantidad), conn);
+                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO producto (`Nombre`, `Precio`, `Imagen`, `Cantidad`) VALUES('{0}','{1}','{2}','{3}');", article.Nombre, article.Precio, article.Imagen, article.Cantidad), conn);
                 int filas = cmd.ExecuteNonQuery();
                 Console.WriteLine(filas.ToString());
             }
@@ -99,5 +99,51 @@ namespace ProyectoASP_Noe_Bor.Models
             }
         }
 
+        public void AddUser(UserViewModel user)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO usuario (`Nickname`, `Apellidos`, `NIF`, `Mail`, `Nombre`, `Admin`, `Contrasena`) VALUES('{0}','{1}','{2}','{3}', '{4}', '{5}', '{6}');", user.Nickname, user.Apellidos, user.NIF, user.Mail, user.Nombre, 1, user.Contrasena), conn);
+                int filas = cmd.ExecuteNonQuery();
+                Console.WriteLine(filas.ToString());
+            }
+        }
+
+        public int Login(string nickname, string contrasena)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                UserViewModel user = new UserViewModel();
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM usuario where Nickname = '" + nickname + "'",conn);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        int id = reader.GetInt32("id");
+                        string Unickname = reader.GetString("nickname");
+                        string apellidos = reader.GetString("apellidos");
+                        string nif = reader.GetString("nif");
+                        string mail = reader.GetString("mail");
+                        string nombre = reader.GetString("nombre");
+                        bool admin = reader.GetBoolean("admin");
+                        string Ucontrasena = reader.GetString("contrasena");
+
+                        user = new UserViewModel(id, Unickname, nombre, apellidos, nif, mail, Ucontrasena, admin);
+                        
+                    }
+                    if(contrasena == user.Contrasena)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+            }
+        }
     }
 }
