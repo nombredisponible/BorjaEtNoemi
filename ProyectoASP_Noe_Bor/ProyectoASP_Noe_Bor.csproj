@@ -6,13 +6,9 @@
 
   <ItemGroup>
     <Compile Remove="Areas\**" />
-    <Compile Remove="Views\ShoppingCart\**" />
     <Content Remove="Areas\**" />
-    <Content Remove="Views\ShoppingCart\**" />
     <EmbeddedResource Remove="Areas\**" />
-    <EmbeddedResource Remove="Views\ShoppingCart\**" />
     <None Remove="Areas\**" />
-    <None Remove="Views\ShoppingCart\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +26,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
 
 </Project>
