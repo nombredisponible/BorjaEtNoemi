@@ -155,7 +155,7 @@ namespace ProyectoASP_Noe_Bor.Models
                         bool admin = reader.GetBoolean("admin");
                         string Ucontrasena = reader.GetString("contrasena");
                         int codVal = reader.GetInt32("codValidacion");
-                        int isVal = reader.GetInt32("validado");
+                        int isVal = reader.GetInt32("verificado");
 
                         user = new UserViewModel(id, Unickname, nombre, apellidos, nif, mail, Ucontrasena, admin, isVal);
                         

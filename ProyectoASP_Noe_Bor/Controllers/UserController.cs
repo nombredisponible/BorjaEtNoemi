@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoASP_Noe_Bor.Models;
 
+
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ProyectoASP_Noe_Bor.Controllers
@@ -14,7 +15,7 @@ namespace ProyectoASP_Noe_Bor.Controllers
     [Route("user")]
     public class UserController : Controller
     {
-        private UserViewModel currentUser = null;
+        
         private DataContextViewModel db = new DataContextViewModel("server=localhost;port=3306;database=proyectoasp_noe_bor;user=admin;password=1111");
         // GET: /<controller>/
         [Route("")]
@@ -30,8 +31,9 @@ namespace ProyectoASP_Noe_Bor.Controllers
         {
             if (db.Login(username, password) == 0)
             {
-                HttpContext.Session.SetString("username", username);
-                return View("Welcome");
+                HttpContext.Session.SetString("username", username);                
+                //string username = HttpContext.Current.User.Identity.Name;
+                return RedirectToAction("Index", "Home");
             }
             else
             {

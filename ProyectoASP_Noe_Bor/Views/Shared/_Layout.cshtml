@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
 @using ProyectoASP_Noe_Bor.Helpers;
 @using Microsoft.AspNetCore.Mvc;
+@using Microsoft.AspNetCore.Http;
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProyectoASP_Noe_Bor</title>
-
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -39,8 +39,23 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Products">Productos</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-area="" asp-controller="Home" asp-action="new"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    @{
+                        byte[] usuario;
+                        if (Context.Session.TryGetValue("username", out usuario))
+                        {
+                            <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-user"></span> @System.Text.Encoding.UTF8.GetString(usuario)</a></li>
+
+                        }
+                        else
+                        {
+                            <li><a asp-area="" asp-controller="Home" asp-action="new"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+
+                        }
+                    }
+
+
                     <li>
                         <a data-toggle="popover" data-trigger="hover" asp-controller="Home" asp-action="ShoppingCart">
                             <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -65,7 +80,6 @@
             <p>&copy; 2018 - ProyectoASP_Noe_Bor</p>
         </footer>
     </div>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
@@ -86,13 +100,11 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     <script>
         $(document).ready(function () {
             $('[data-toggle="popover"]').popover({ title: "<h4>Shopping cart</h4>", content: "item01 x3 <br> item02 x2 <br> item03 x1", html: true, placement: "bottom" });
         });
     </script>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
