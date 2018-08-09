@@ -20,7 +20,7 @@ namespace ProyectoASP_Noe_Bor.Controllers
         [Route("~/")]
         public IActionResult Index()
         {
-            return View();
+            return View(db.GetAllProducts());
         }
 
         [Route("about")]

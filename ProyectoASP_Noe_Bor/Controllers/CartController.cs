@@ -11,6 +11,8 @@ namespace ProyectoASP_Noe_Bor.Controllers
     [Route("cart")]
     public class CartController : Controller
     {
+        private DataContextViewModel db = new DataContextViewModel("server=localhost;port=3306;database=proyectoasp_noe_bor;user=admin;password=1111");
+
         [Route("index")]
         public IActionResult Index()
         {
@@ -18,6 +20,12 @@ namespace ProyectoASP_Noe_Bor.Controllers
             ViewBag.cart = cart;
             ViewBag.total = cart.LineasFactura.Sum(item => item.Producto.Precio * item.Cantidad);
             ViewBag.cartItems = cart.LineasFactura.Count();
+            ViewData["resumenCarrito"] = string.Empty;
+            foreach (BillDetailViewModel item in cart.LineasFactura)
+            {
+                ViewData["resumenCarrito"] += string.Format("{1} {0}<br>", item.Producto.Nombre, item.Cantidad);
+            }
+            ViewData["itemsCarrito"] = cart.LineasFactura.Count.ToString();
             return View("../home/ShoppingCart", cart);
         }
 
@@ -37,7 +45,7 @@ namespace ProyectoASP_Noe_Bor.Controllers
                 int index = isExist(id);
                 if (index != -1)
                 {
-                    cart.LineasFactura.Where(f => f.Producto.Id == index).FirstOrDefault().Cantidad++;
+                    cart.LineasFactura[index].Cantidad++;
                 }
                 else
                 {
@@ -58,12 +66,29 @@ namespace ProyectoASP_Noe_Bor.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("checkout")]
+        public IActionResult Checkout()
+        {
+            int userID = 1; //TODO usuario loggeado 
+
+            BillViewModel cart = SessionHelper.GetObjectFromJson<BillViewModel>(HttpContext.Session, "cart");
+            if (cart == null || !(cart.LineasFactura.Count > 0))
+            {
+
+            }
+            else
+            {
+                db.BuyCart(userID, cart);
+            }
+            return RedirectToAction("Index");
+        }
+
         private int isExist(string id)
         {
             BillViewModel cart = SessionHelper.GetObjectFromJson<BillViewModel>(HttpContext.Session, "cart");
             for (int i = 0; i < cart.LineasFactura.Count; i++)
             {
-                if (cart.LineasFactura[i].Producto.Id.Equals(id))
+                if (cart.LineasFactura[i].Producto.Id.ToString().Equals(id))
                 {
                     return i;
                 }
