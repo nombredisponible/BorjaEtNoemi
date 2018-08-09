@@ -31,7 +31,9 @@ namespace ProyectoASP_Noe_Bor.Controllers
         {
             if (db.Login(username, password) == 0)
             {
-                HttpContext.Session.SetString("username", username);                
+                HttpContext.Session.SetString("username", username);
+                string userID = db.getUserId(username).ToString();
+                HttpContext.Session.SetString("userID", userID);
                 //string username = HttpContext.Current.User.Identity.Name;
                 return RedirectToAction("Index", "Home");
             }

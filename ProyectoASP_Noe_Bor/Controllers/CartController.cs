@@ -69,16 +69,25 @@ namespace ProyectoASP_Noe_Bor.Controllers
         [Route("checkout")]
         public IActionResult Checkout()
         {
-            int userID = 1; //TODO usuario loggeado 
-
-            BillViewModel cart = SessionHelper.GetObjectFromJson<BillViewModel>(HttpContext.Session, "cart");
-            if (cart == null || !(cart.LineasFactura.Count > 0))
+            byte[] userId;
+            int id = 0;
+            if (HttpContext.Session.TryGetValue("userID", out userId))
             {
+                Int32.TryParse(System.Text.Encoding.UTF8.GetString(userId), out id);
 
+                BillViewModel cart = SessionHelper.GetObjectFromJson<BillViewModel>(HttpContext.Session, "cart");
+                if (cart == null || !(cart.LineasFactura.Count > 0))
+                {
+
+                }
+                else
+                {
+                    db.BuyCart(id, cart);
+                }
             }
             else
             {
-                db.BuyCart(userID, cart);
+                return RedirectToAction("Login","Home");
             }
             return RedirectToAction("Index");
         }
