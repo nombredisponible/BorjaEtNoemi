@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+    <h3>Verification Page for @ViewBag.user.Mail</h3>
+    @ViewBag.error   
+    <form method="post" asp-controller="user" asp-action="verify">
+        <table cellpadding="2" cellspacing="2">
+            <tr>
+                <td>Cod. Verification</td>
+                <td>
+                    <input id="code" type="text" name="code" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="hidden" id ="mail" name="mail" value=@ViewBag.user.Mail />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <input type="submit" value="verify" />
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

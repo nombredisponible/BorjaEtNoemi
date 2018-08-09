@@ -8,7 +8,7 @@ namespace ProyectoASP_Noe_Bor.Models
     public class UserViewModel
     {
         public UserViewModel() { }
-        public UserViewModel(int id, string nickname, string nombre, string apellidos, string nIF, string mail, string contrasena, bool admin)
+        public UserViewModel(int id, string nickname, string nombre, string apellidos, string nIF, string mail, string contrasena, bool admin, int validado)
         {
             Id = id;
             Nickname = nickname;
@@ -18,6 +18,7 @@ namespace ProyectoASP_Noe_Bor.Models
             Mail = mail;
             Contrasena = contrasena;
             Admin = admin;
+            Validado = validado;
         }
 
         public int Id { get; }
@@ -28,6 +29,7 @@ namespace ProyectoASP_Noe_Bor.Models
         public string Mail { get; set; }
         public string Contrasena { get; set; }
         public bool Admin { get; set; }
+        public int Validado { get; }
     }
 
    
