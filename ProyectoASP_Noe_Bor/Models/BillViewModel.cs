@@ -21,7 +21,14 @@ namespace ProyectoASP_Noe_Bor.Models
             LineasFactura = lineasFactura;
         }
 
+        public BillViewModel(DateTime fecha, List<BillDetailViewModel> lineasFactura)
+        {
+            Fecha = fecha;            
+            LineasFactura = lineasFactura;
+        }
+
         public int Id { get; }
+        public int IdBD { get; set; }
         public DateTime Fecha { get; set; }
         public UserViewModel Cliente { get; set; }
         public List<BillDetailViewModel> LineasFactura { get; set; }

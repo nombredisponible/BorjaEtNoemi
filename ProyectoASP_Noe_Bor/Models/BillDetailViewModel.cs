@@ -20,6 +20,8 @@ namespace ProyectoASP_Noe_Bor.Models
         public int Id { get; set; }
         public int Cantidad { get; set; }
         public double Subtotal { get{return Producto.Precio * Cantidad; } }
+        public double SubtotalBD { get; set; }
         public ArticleViewModel Producto { get; set; }
-    }
+        public string nomProducto { get; set; }
+}
 }
