@@ -14,6 +14,7 @@ namespace ProyectoASP_Noe_Bor.Controllers
     [Route("user")]
     public class UserController : Controller
     {
+        private UserViewModel currentUser = null;
         private DataContextViewModel db = new DataContextViewModel("server=localhost;port=3306;database=proyectoasp_noe_bor;user=admin;password=1111");
         // GET: /<controller>/
         [Route("")]
@@ -49,6 +50,8 @@ namespace ProyectoASP_Noe_Bor.Controllers
             try
             {
                 db.AddUser(user);
+                //currentUser = user;
+                ViewBag.user = user;
                 return View("../Users/Verify");
                 //return RedirectToAction("Home", "Index");
             }
@@ -60,13 +63,13 @@ namespace ProyectoASP_Noe_Bor.Controllers
         }
 
         [Route("verify")]
-        public IActionResult Verify(int cod)
+        public IActionResult Verify(string code, string mail)
         {
-            if (cod == 12345)
-            {
+            if (code.Equals("12345"))
+            {                
+                db.setVerified(mail);
                 return View("Welcome");
-            } else
-            {
+            } else {
                 return View("Bad code");
             }
         }

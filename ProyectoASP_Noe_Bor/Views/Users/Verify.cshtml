@@ -11,14 +11,20 @@
 </head>
 <body>
 
-    <h3>Verification Page</h3>
-    @ViewBag.error
+    <h3>Verification Page for @ViewBag.user.Mail</h3>
+    @ViewBag.error   
     <form method="post" asp-controller="user" asp-action="verify">
         <table cellpadding="2" cellspacing="2">
             <tr>
                 <td>Cod. Verification</td>
                 <td>
-                    <input type="text" name="verify" />
+                    <input id="code" type="text" name="code" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="hidden" id ="mail" name="mail" value=@ViewBag.user.Mail />
                 </td>
             </tr>
             <tr>

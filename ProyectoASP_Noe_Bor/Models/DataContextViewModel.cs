@@ -106,7 +106,7 @@ namespace ProyectoASP_Noe_Bor.Models
             using (MySqlConnection conn = GetConnection())
             {
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO usuario (`Nickname`, `Apellidos`, `NIF`, `Mail`, `Nombre`, `Admin`, `Contrasena`) VALUES('{0}','{1}','{2}','{3}', '{4}', '{5}', '{6}');", user.Nickname, user.Apellidos, user.NIF, user.Mail, user.Nombre, 1, user.Contrasena, 0), conn);
+                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO usuario (`Nickname`, `Apellidos`, `NIF`, `Mail`, `Nombre`, `Admin`, `Contrasena`,`Verificado`) VALUES('{0}','{1}','{2}','{3}', '{4}', '{5}', '{6}', '{7}');", user.Nickname, user.Apellidos, user.NIF, user.Mail, user.Nombre, 1, user.Contrasena, 0), conn);
                 int filas = cmd.ExecuteNonQuery();
                 Console.WriteLine(filas.ToString());
             }
@@ -169,6 +169,39 @@ namespace ProyectoASP_Noe_Bor.Models
                         return -1;
                     }
                 }
+            }
+        }
+
+        public int getUserId(string email)
+        {
+            int id = 0;
+            using (MySqlConnection conn = GetConnection())
+            {
+                
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM usuario where Mail = '" + email + "'", conn);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        id = reader.GetInt32("id");
+
+                    }
+                }
+            }
+            return id;
+        }
+
+        public void setVerified(string mail)
+        {
+            
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("UPDATE usuario SET Verificado = 1 WHERE usuario.Mail = '" + mail + "'", conn);
+                int filas = cmd.ExecuteNonQuery();
+                Console.WriteLine(filas.ToString());
             }
         }
     }

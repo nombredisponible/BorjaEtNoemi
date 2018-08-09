@@ -41,3 +41,4 @@ C:\Users\usuario\Desktop\BorjaEtNoemi-master\ProyectoASP_Noe_Bor\obj\Debug\netco
 C:\Users\usuario\Desktop\BorjaEtNoemi-master\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.AssemblyInfo.cs
 C:\Users\usuario\Desktop\BorjaEtNoemi-master\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.dll
 C:\Users\usuario\Desktop\BorjaEtNoemi-master\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.pdb
+C:\Users\usuario\Desktop\BorjaEtNoemi-master\ProyectoASP_Noe_Bor\obj\Debug\netcoreapp2.0\ProyectoASP_Noe_Bor.csprojAssemblyReference.cache
