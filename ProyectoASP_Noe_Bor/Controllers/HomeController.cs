@@ -114,6 +114,14 @@ namespace ProyectoASP_Noe_Bor.Controllers
             return View("../Users/NewUser");
         }
 
+        [Route("user")]
+        public IActionResult User()
+        {
+            ViewData["Message"] = "Your user page.";
+
+            return View();
+        }
+
     }
 
 }

@@ -188,14 +188,14 @@ namespace ProyectoASP_Noe_Bor.Models
             }
         }
 
-        public int getUserId(string email)
+        public int getUserId(string name)
         {
             int id = 0;
             using (MySqlConnection conn = GetConnection())
             {
                 
                 conn.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM usuario where Mail = '" + email + "'", conn);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM usuario where nickname = '" + name + "'", conn);
                 using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())

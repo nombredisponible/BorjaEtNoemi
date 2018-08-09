@@ -1,0 +1,77 @@
+﻿@model ProyectoASP_Noe_Bor.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "User";
+}
+
+<h2>User</h2>
+
+<div>
+    <h4>UserViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nickname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellidos)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Apellidos)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NIF)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NIF)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contrasena)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Contrasena)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Validado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Validado)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to Home</a>
+</div>
+
+<div>
+    <a href="#" class="btn btn-danger">Facturas PDF</a>
+
+    <a href="#" class="btn btn-success">Facturas Excel</a>
+</div>
