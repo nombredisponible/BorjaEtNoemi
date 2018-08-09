@@ -109,6 +109,22 @@ namespace ProyectoASP_Noe_Bor.Models
                 Console.WriteLine(filas.ToString());
             }
         }
+        
+        public void BuyCart(int userId,BillViewModel cart)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(String.Format("INSERT INTO factura (`Fecha`, `IdCliente`) VALUES('{0}','{1}');", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),userId), conn);
+                int filas = cmd.ExecuteNonQuery();
+                foreach (BillDetailViewModel item in cart.LineasFactura)
+                {
+                    MySqlCommand cmd1 = new MySqlCommand(String.Format("INSERT INTO lineafactura (`IdFactura`, `IdProducto`, `Cantidad`, `Subtotal`) VALUES((SELECT max(id) from factura),'{0}','{1}','{2}');", item.Producto.Id, item.Cantidad, item.Subtotal.ToString().Replace(",",".")), conn);
+                    filas = cmd1.ExecuteNonQuery();
+                }
+                Console.WriteLine(filas.ToString());
+            }
+        }
 
         public int Login(string nickname, string contrasena)
         {

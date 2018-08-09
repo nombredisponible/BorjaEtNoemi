@@ -15,12 +15,11 @@ namespace ProyectoASP_Noe_Bor.Models
         {
             Cantidad = cantidad;
             Producto = producto;
-            Subtotal = producto.Precio * cantidad;
         }
 
         public int Id { get; set; }
         public int Cantidad { get; set; }
-        public double Subtotal { get; set; }
+        public double Subtotal { get{return Producto.Precio * Cantidad; } }
         public ArticleViewModel Producto { get; set; }
     }
 }

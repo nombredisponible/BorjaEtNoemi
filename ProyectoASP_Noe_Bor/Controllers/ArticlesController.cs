@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -39,13 +40,25 @@ namespace ProyectoASP_Noe_Bor.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("create")]
-        public ActionResult Create(ArticleViewModel art)
+        public IActionResult Create(ArticleViewModel art, IFormFile photo)
         {
+            if (photo == null || photo.Length == 0)
+            {
+                return Content("File not selected");
+            }
+            else
+            {
+
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", photo.FileName);
+                var stream = new FileStream(path, FileMode.Create);
+                photo.CopyToAsync(stream);
+                art.Imagen = photo.FileName;
+            }
             try
             {
                 db.Insert(art);
 
-                return RedirectToAction("Articles","Home");
+                return RedirectToAction("Articles", "Home");
             }
             catch
             {
