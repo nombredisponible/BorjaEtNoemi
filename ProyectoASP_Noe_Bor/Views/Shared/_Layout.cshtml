@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProyectoASP_Noe_Bor</title>
 
+    @{ 
+        BillViewModel cart = new BillViewModel();
+    }
+
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -39,17 +43,17 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Products">Productos</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"></span> your name here</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="new"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li>
                         <a data-toggle="popover" data-trigger="hover" asp-controller="Home" asp-action="ShoppingCart">
                             <span class="glyphicon glyphicon-shopping-cart"></span>
                             @{
-                                int items = ViewBag.cartItems == null ? 0 : ViewBag.cartItems;
-
-                                if (items > 0)
+                                if (ViewBag.cart != null && ViewBag.cart.LineasFactura.Count > 0)
                                 {
-                                    Html.Raw("<span class='badge'>" + ViewBag.cartItems + "</span>");
+                                    Html.Raw(string.Format("<span class='badge'>{0}</span>", ViewBag.cart.LineasFactura.Count));
                                 }
                             }
                         </a>
@@ -89,7 +93,17 @@
 
     <script>
         $(document).ready(function () {
-            $('[data-toggle="popover"]').popover({ title: "<h4>Shopping cart</h4>", content: "item01 x3 <br> item02 x2 <br> item03 x1", html: true, placement: "bottom" });
+            @*@{
+                string resumenCarrito = string.Empty;
+                if (ViewBag.cart != null){
+                    foreach (BillDetailViewModel item in ViewBag.cart.LineasFactura)
+                    {
+                        resumenCarrito += string.Format("{0} x{1}<br>",item.Producto.Nombre,item.Cantidad);
+                    }
+                }
+
+            }*@
+            $('[data-toggle="popover"]').popover({ title: "<h4>Shopping cart</h4>", content: "@Html.Raw(ViewData["resumenCarrito"])", html: true, placement: "bottom" });
         });
     </script>
 
