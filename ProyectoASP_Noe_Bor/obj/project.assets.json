@@ -13447,23 +13447,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Noemi\\.nuget\\packages\\": {},
+    "C:\\Users\\Borja\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Noemi\\Desktop\\BorjaEtNoemi-master\\ProyectoASP_Noe_Bor\\ProyectoASP_Noe_Bor.csproj",
+      "projectUniqueName": "C:\\Users\\Borja\\source\\repos\\BorjaEtNoemi\\ProyectoASP_Noe_Bor\\ProyectoASP_Noe_Bor.csproj",
       "projectName": "ProyectoASP_Noe_Bor",
-      "projectPath": "C:\\Users\\Noemi\\Desktop\\BorjaEtNoemi-master\\ProyectoASP_Noe_Bor\\ProyectoASP_Noe_Bor.csproj",
-      "packagesPath": "C:\\Users\\Noemi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Noemi\\Desktop\\BorjaEtNoemi-master\\ProyectoASP_Noe_Bor\\obj\\",
+      "projectPath": "C:\\Users\\Borja\\source\\repos\\BorjaEtNoemi\\ProyectoASP_Noe_Bor\\ProyectoASP_Noe_Bor.csproj",
+      "packagesPath": "C:\\Users\\Borja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Borja\\source\\repos\\BorjaEtNoemi\\ProyectoASP_Noe_Bor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Noemi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Borja\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
