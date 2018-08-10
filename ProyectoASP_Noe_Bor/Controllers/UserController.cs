@@ -157,9 +157,9 @@ namespace ProyectoASP_Noe_Bor.Controllers
             _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLUE);
 
             // Llenamos la tabla con el primer resultado
-            idFactura = new PdfPCell(new Phrase("Luis", _standardFont));
+            idFactura = new PdfPCell(new Phrase(factura.IdBD.ToString(), _standardFont));
             idFactura.BorderWidth = 0;
-            fecha = new PdfPCell(new Phrase("López", _standardFont));
+            fecha = new PdfPCell(new Phrase(factura.Fecha.ToString(), _standardFont));
             fecha.BorderWidth = 0;
 
             // Añadimos las celdas a la tabla
@@ -191,17 +191,15 @@ namespace ProyectoASP_Noe_Bor.Controllers
                     tblPrueba2.AddCell(cantidad);
                     tblPrueba2.AddCell(subtotal);
 
-
-
                     // Cambiamos el tipo de Font para el listado
                     _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLUE);
 
                     // Llenamos la tabla con el primer resultado
-                    nomProducto = new PdfPCell(new Phrase("Luis", _standardFont));
+                    nomProducto = new PdfPCell(new Phrase(linea.nomProducto, _standardFont));
                     nomProducto.BorderWidth = 0;
-                    cantidad = new PdfPCell(new Phrase("López", _standardFont));
+                    cantidad = new PdfPCell(new Phrase(linea.Cantidad.ToString(), _standardFont));
                     cantidad.BorderWidth = 0;
-                    subtotal = new PdfPCell(new Phrase("López", _standardFont));
+                    subtotal = new PdfPCell(new Phrase(linea.SubtotalBD.ToString(), _standardFont));
                     subtotal.BorderWidth = 0;
 
                     // Añadimos las celdas a la tabla
