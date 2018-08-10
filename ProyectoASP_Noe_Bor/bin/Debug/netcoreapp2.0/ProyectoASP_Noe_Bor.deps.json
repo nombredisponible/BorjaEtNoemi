@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "7890ac881831334a42613e2bdff3b4d9a14cb52f"
+    "signature": "73ba585e2bc895b434f3e21020d1e57a361e8ec3"
   },
   "compilationOptions": {
     "defines": [
@@ -26,7 +26,8 @@
           "Microsoft.AspNetCore.All": "2.0.9",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.3",
-          "MySql.Data": "8.0.12"
+          "MySql.Data": "8.0.12",
+          "iTextSharp": "5.5.13"
         },
         "runtime": {
           "ProyectoASP_Noe_Bor.dll": {}
@@ -44,6 +45,14 @@
         },
         "compile": {
           "lib/netstandard1.0/Google.Protobuf.dll": {}
+        }
+      },
+      "iTextSharp/5.5.13": {
+        "runtime": {
+          "lib/itextsharp.dll": {}
+        },
+        "compile": {
+          "lib/itextsharp.dll": {}
         }
       },
       "Libuv/1.10.0": {
@@ -4305,6 +4314,13 @@
       "sha512": "sha512-f2k1VNaB9bfvEsvARzzEL1TZiIpL33KKK3JMH7UANlPlJVptuvsk4qpBZEnz0pORWZOdUHlVwMQuUzFqjJYCxA==",
       "path": "google.protobuf/3.5.1",
       "hashPath": "google.protobuf.3.5.1.nupkg.sha512"
+    },
+    "iTextSharp/5.5.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-MigtmZrqjrJ4QERhgNZc+zhl+XSNV5y3JoH5nNxzdNjPvZJgzYN2qLRQhqtWsF9F/1H28SnOkoS6uIlSduSrXQ==",
+      "path": "itextsharp/5.5.13",
+      "hashPath": "itextsharp.5.5.13.nupkg.sha512"
     },
     "Libuv/1.10.0": {
       "type": "package",
