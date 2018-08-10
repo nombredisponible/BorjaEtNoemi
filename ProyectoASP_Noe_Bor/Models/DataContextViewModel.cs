@@ -209,6 +209,34 @@ namespace ProyectoASP_Noe_Bor.Models
             return id;
         }
 
+        public UserViewModel getUserById(int id)
+        {
+            UserViewModel ret = new UserViewModel();
+            using (MySqlConnection conn = GetConnection())
+            {
+
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM usuario where id = '" + id + "'", conn);
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        ret.Id = reader.GetInt32("id");
+                        ret.Nickname = reader.GetString("Nickname");
+                        ret.Apellidos = reader.GetString("Apellidos");
+                        ret.NIF = reader.GetString("NIF");
+                        ret.Mail = reader.GetString("Mail");
+                        ret.Nombre = reader.GetString("Nombre");
+                        ret.Admin = reader.GetBoolean("Admin");
+                        ret.Contrasena = reader.GetString("Contrasena");
+
+                    }
+                }
+            }
+            return ret;
+        }
+
         public void setVerified(string mail)
         {
             

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "7890ac881831334a42613e2bdff3b4d9a14cb52f"
+    "signature": "27f5bbd684235764c47f6dd9483d10bb2332feb2"
   },
   "compilationOptions": {
     "defines": [
@@ -26,7 +26,8 @@
           "Microsoft.AspNetCore.All": "2.0.9",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.3",
-          "MySql.Data": "8.0.12"
+          "MySql.Data": "8.0.12",
+          "OfficeOpenXml.Core.ExcelPackage": "1.0.0"
         },
         "runtime": {
           "ProyectoASP_Noe_Bor.dll": {}
@@ -2528,6 +2529,20 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
+      "OfficeOpenXml.Core.ExcelPackage/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "System.IO.Packaging": "4.0.0",
+          "System.Xml.XPath": "4.3.0",
+          "System.Xml.XPath.XDocument": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.6/OfficeOpenXml.Core.ExcelPackage.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.6/OfficeOpenXml.Core.ExcelPackage.dll": {}
+        }
+      },
       "Remotion.Linq/2.1.1": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -3235,6 +3250,28 @@
       "System.IO.FileSystem.Primitives/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
+        }
+      },
+      "System.IO.Packaging/4.0.0": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Diagnostics.Debug": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.IO.Compression": "4.3.0",
+          "System.IO.FileSystem": "4.3.0",
+          "System.IO.FileSystem.Primitives": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.0",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Xml.ReaderWriter": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.IO.Packaging.dll": {}
+        },
+        "compile": {
+          "ref/netstandard1.3/System.IO.Packaging.dll": {}
         }
       },
       "System.Linq/4.3.0": {
@@ -5538,6 +5575,13 @@
       "path": "nuget.frameworks/4.0.0",
       "hashPath": "nuget.frameworks.4.0.0.nupkg.sha512"
     },
+    "OfficeOpenXml.Core.ExcelPackage/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LDhZ7K/zd7Zg3qndOacpdoYvyMbrnOm590g6fhS7NhR3zWkg90sz4NyOo1LGwq/9zianqjwV4gyJjtzLZ5JKww==",
+      "path": "officeopenxml.core.excelpackage/1.0.0",
+      "hashPath": "officeopenxml.core.excelpackage.1.0.0.nupkg.sha512"
+    },
     "Remotion.Linq/2.1.1": {
       "type": "package",
       "serviceable": true,
@@ -5999,6 +6043,13 @@
       "sha512": "sha512-6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
       "path": "system.io.filesystem.primitives/4.3.0",
       "hashPath": "system.io.filesystem.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Packaging/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-taPqPWcAj/h6e/c+zIWIVe1ddJtpV6acC6g9GpolxUcIwUaH6zc0ZbFS8kkVzBkuWv76pMalKeTzfmHtfT1pXA==",
+      "path": "system.io.packaging/4.0.0",
+      "hashPath": "system.io.packaging.4.0.0.nupkg.sha512"
     },
     "System.Linq/4.3.0": {
       "type": "package",

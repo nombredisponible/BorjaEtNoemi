@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ProyectoASP_Noe_Bor</title>
 
-    @{ 
+    @{
         BillViewModel cart = new BillViewModel();
     }
 
@@ -46,10 +46,12 @@
                 <ul class="nav navbar-nav navbar-right">
                     @{
                         byte[] usuario;
+                        byte[] userId;
                         if (Context.Session.TryGetValue("username", out usuario))
                         {
+                            Context.Session.TryGetValue("userID", out userId);
                             <li><a asp-area="" asp-controller="Home" asp-action="Login"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="user"><span class="glyphicon glyphicon-user"></span> @System.Text.Encoding.UTF8.GetString(usuario)</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="user" asp-route-id="@System.Text.Encoding.UTF8.GetString(userId)"><span class="glyphicon glyphicon-user"></span> @System.Text.Encoding.UTF8.GetString(usuario)</a></li>
 
                         }
                         else

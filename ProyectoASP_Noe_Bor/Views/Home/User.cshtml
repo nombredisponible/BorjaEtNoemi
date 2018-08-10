@@ -4,10 +4,10 @@
     ViewData["Title"] = "User";
 }
 
-<h2>User</h2>
+<h2>@Html.DisplayFor(model => model.Nombre)</h2>
 
 <div>
-    <h4>UserViewModel</h4>
+    <h4>@Html.DisplayFor(model => model.Mail)</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -66,12 +66,8 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Index">Back to Home</a>
-</div>
 
 <div>
     <a href="#" class="btn btn-danger">Facturas PDF</a>
-
-    <a href="#" class="btn btn-success">Facturas Excel</a>
+    <a asp-action="generateExcel" asp-controller="User" class="btn btn-success">Facturas Excel</a>
 </div>

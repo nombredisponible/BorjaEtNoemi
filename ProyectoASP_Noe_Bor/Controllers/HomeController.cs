@@ -114,12 +114,27 @@ namespace ProyectoASP_Noe_Bor.Controllers
             return View("../Users/NewUser");
         }
 
-        [Route("user")]
-        public IActionResult User()
+        [Route("user/{id}")]
+        public IActionResult User(string id)
         {
-            ViewData["Message"] = "Your user page.";
+            byte[] userId;
+            int retId = 0;
+            //si hay sesion...
+            if (HttpContext.Session.TryGetValue("userID", out userId))
+            {
+                //si el id de la sesion coincide con la url...
+                if (System.Text.Encoding.UTF8.GetString(userId).Equals(id))
+                {
 
-            return View();
+                    if (Int32.TryParse(System.Text.Encoding.UTF8.GetString(userId), out retId))
+                    {
+                        return View(db.getUserById(retId));
+                    }
+                }
+            }
+                ViewData["Message"] = "Your user page.";
+
+            return RedirectToAction("index");
         }
 
     }
